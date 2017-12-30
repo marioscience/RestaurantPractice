@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    web:
+        build: ./server
+        command: python3 server/manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/src
+        ports:
+            - "8000:8000"
+    client:
+        build: ./client
+        command: npm start
+        volumes:
+            - .:/usr/src/client
+        ports:
+            - "4200:4200"
